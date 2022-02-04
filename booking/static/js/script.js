@@ -1,3 +1,2 @@
-$(document).ready(function(){
-    $('.datepicker').datepicker();
-  });
+const Calendar = document.querySelector('.datepicker');
+M.Datepicker.init(Calendar,{});
