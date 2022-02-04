@@ -22,5 +22,4 @@ urlpatterns = [
     path('', views.get_home, name='get_home'),
     path('book/', views.get_booking, name='book'),
     path('home/', views.back_home, name='home'),
-    path('modal/', views.get_modal, name='modal'),
 ]

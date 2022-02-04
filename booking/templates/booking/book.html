@@ -33,7 +33,24 @@
             <div class="card-action">
             </div>
           </div>
-          <a href="/modal" class="waves-effect waves-light btn-large modal-trigger">Book Now</a>
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="Name" id="first_name" type="text" class="validate" required>
+                  <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="email" type="email" class="validate" required>
+                  <label for="email">Email</label>
+                </div>
+                <div class="input-field col s12">
+                  <input type="text" class="datepicker">
+                </div>
+              </div>
+            </form>
+          </div>
+          <a href="" class="waves-effect waves-light btn-large modal-trigger">Book Now</a>
         </div>
       </div>
     </div>
@@ -88,5 +105,6 @@
     </div>
   </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    {% load static %}
 </body>
 </html>

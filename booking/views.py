@@ -13,5 +13,3 @@ def get_booking(request):
 def back_home(request):
     return render(request, 'booking/home.html')
 
-def get_modal(request):
-    return render(request, 'booking/modal.html')
