@@ -35,23 +35,16 @@
             </div>
           </div>
           <div class="row">
-            <form class="col s12">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input placeholder="Name" id="first_name" type="text" class="validate" required>
-                  <label for="first_name">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                  <input id="email" type="email" class="validate" required>
-                  <label for="email">Email</label>
-                </div>
-                <div class="input-field col s12">
-                  <input type="text" class="datepicker">
-                </div>
+            <form class="col s12" method="POST">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div>
+                  <p>
+                      <button type="submit">Book Now</button>
+                  </p>
               </div>
             </form>
           </div>
-          <a href="" class="waves-effect waves-light btn-large modal-trigger">Book Now</a>
         </div>
       </div>
     </div>
