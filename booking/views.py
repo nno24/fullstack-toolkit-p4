@@ -8,16 +8,29 @@ from .forms import BookingForm
 
 def get_home(request):
     return render(request, 'booking/home.html')
-
-
-def get_booking(request):
-    if request.method == 'POST':
-        print('the request is: ', request.POST.get('item_name'))
-        return redirect('get_home')
-    return render(request, 'booking/book.html')
-
+    
 def back_home(request):
     return render(request, 'booking/home.html')
 
- 
+def get_booking(request):
+    return render(request, 'booking/book.html')
 
+def greeting(request):
+    booking = Booking.objects.last()
+
+    context = {
+        'booking': booking
+    }
+    return render(request, 'booking/greeting.html', context)
+
+def form_view(request):
+    form = BookingForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = BookingForm()
+        return redirect('greeting')
+    
+    context = {
+        'form': form
+    }
+    return render(request, 'booking/form.html', context)

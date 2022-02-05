@@ -13,7 +13,7 @@
   <header>
     <nav>
         <div class="nav-wrapper">
-          <a href="/home/" class="brand-logo">Pizza Heaven</a>
+          <a href="/home" class="brand-logo">Pizza Heaven</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/book">Book Now</a></li>
             <li><a href="/about">About</a></li>
@@ -22,6 +22,23 @@
       </nav>
   </header>
   <section>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 center">
+          <div class="row">
+            <form class="col s12" method="POST">
+              {% csrf_token %}
+              {{ form.as_table }}
+              <div>
+                  <p>
+                      <button class="btn waves-effect waves-light" type="submit">Book Now</button>
+                  </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
   <footer class="page-footer">
     <div class="container">

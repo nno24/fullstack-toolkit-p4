@@ -22,4 +22,6 @@ urlpatterns = [
     path('', views.get_home, name='get_home'),
     path('book/', views.get_booking, name='book'),
     path('home/', views.back_home, name='home'),
+    path('form/', views.form_view, name='form'),
+    path('greeting', views.greeting, name='greeting'),
 ]
