@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href='{% static "booking/css/style.css" %}'>
+    <title>Resturant Booking | Pizza Heaven</title>
+</head>
+<body>
+  <header>
+    <nav>
+        <div class="nav-wrapper">
+          <a href="/home/" class="brand-logo">Pizza Heaven</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/book">Book Now</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </div>
+      </nav>
+  </header>
+  <section>
+    {% block content %}
+    {% endblock %}
+  </section>
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Opening Hours</h5>
+          <table>
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Hours</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Monday - Friday</td>
+                <td>10 - 23</td>
+              </tr>
+              <tr>
+                <td>Saturday</td>
+                <td>10 - 02</td>
+              </tr>
+              <tr>
+                <td>Sonday</td>
+                <td>12 - 23</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Socials</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!"><i class="fab fa-instagram"></i></a></li>
+            <li><a class="grey-text text-lighten-3" href="#!"><i class="fab fa-facebook"></i></a></li>
+            <li><a class="grey-text text-lighten-3" href="#!"><i class="fab fa-twitter"></i></a></li>    
+          </ul>
+        </div>
+        <div class="col 10 offset-12 s12">
+          <h5 class="white-text">Contact</h5>
+            <p>heavnpizza@eatme.now</p>
+            <p>+0672358931</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2022 Copyright Pizza Heaven
+      </div>
+    </div>
+  </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src='{% static "booking/js/script.js" %}'></script>
+</body>
+</html>
