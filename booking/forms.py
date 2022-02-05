@@ -8,5 +8,6 @@ class BookingForm(forms.ModelForm):
         fields = [
             'name',
             'email',
-            'people'
+            'people',
+            'date_time'
         ]
