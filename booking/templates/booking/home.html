@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    {% load static %}
+    <link rel="stylesheet" href='{% static "booking/css/style.css" %}'>
     <title>Resturant Booking | Pizza Heaven</title>
 </head>
 <body>
@@ -22,6 +23,13 @@
       </nav>
   </header>
   <section>
+    <div class="container">
+      <div class="row">
+        <div class="col s12 center">
+          <h3>Welcome!</h3>
+        </div>
+      </div>
+    </div>
   </section>
   <footer class="page-footer">
     <div class="container">
