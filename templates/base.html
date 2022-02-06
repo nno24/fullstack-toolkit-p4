@@ -13,20 +13,28 @@
 <body>
   <header>
     <nav>
-        <div class="nav-wrapper">
-          <a href="/home/" class="brand-logo">Pizza Heaven</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/book">Book Now</a></li>
+        <div class="nav-wrapper cyan darken-4">
+          <a href="/home/" class="brand-logo center">Pizza Heaven</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="/book">Menu/Book</a></li>
             <li><a href="/about">About</a></li>
           </ul>
         </div>
       </nav>
+      <ul class="sidenav cyan darken-4" id="mobile-demo">
+        <li ><a href="/home/">Home</a></li>
+        <li ><a href="/book">Menu/Book</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
   </header>
+  <main>
   <section>
     {% block content %}
     {% endblock %}
   </section>
-  <footer class="page-footer">
+  </main>
+  <footer class="page-footer cyan darken-4">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
@@ -69,7 +77,7 @@
         </div>
       </div>
     </div>
-    <div class="footer-copyright">
+    <div class="footer-copyright cyan darken-3">
       <div class="container">
       © 2022 Copyright Pizza Heaven
       </div>
