@@ -130,10 +130,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = BASE_DIR / 'staticfiles-cdn'  #for production - we want cdn.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles-cdn') # for production
 
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinarStorage'
@@ -144,7 +143,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinarStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-""" #Email settings
+""" #Email settings for test env 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = '1025'
 EMAIL_HOST_USER = ''

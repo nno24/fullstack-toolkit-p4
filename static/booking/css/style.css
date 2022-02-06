@@ -7,7 +7,7 @@ body {
 
 main {
     flex: 1 0 auto;
-    background-image: url('/static/booking/img/Italian-hot-pizza-924989.jpg');
+    background-image: url('/static/booking/img/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
