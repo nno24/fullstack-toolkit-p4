@@ -1,108 +1,232 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<h1 align="center">Pizza Heaven - Resturant Booking</h1>
 
-Welcome nno24,
+[View the live project here.](https://resturant-booking-p4.herokuapp.com/)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+This is the official page for Pizza Heaven. It is designed to be responsive and accessible on a range of devices, making it easy to navigate.
+The booking system offers a staff user to see the bookings in the databse, via the admin page. And customers can place new booking with date, time, and number of people. They also have to incude an email address. For the production environment, the send mail function is not activated, but it's implemented.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+<h2 align="center">
+    <img src="assets/images/screenshots/devices/frontpage.JPG">
+</h2>
 
-## Gitpod Reminders
+## User Experience (UX)
+-   ### User stories
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+    -   #### Resturant Booking - Staff
 
-`python3 -m http.server`
+        1. As a booking responsible for the resturant, I want to be able to see all the customers bookings time and date, and number of people in each booking, so that i can prepare the resturant in time.
 
-A blue button should appear to click: _Make Public_,
+    -   #### esturant Booking - Customer
 
-Another blue button should appear to click: _Open Browser_.
+        1. As a customer, I want to be able to book a table for a specific data and time in the resturant, so that I can get a booking confirmation on my email.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
 
-A blue button should appear to click: _Make Public_,
+-   ### Design
+    -   #### Colour Scheme
+        -   The three main colours used are cyan darken-4, white, and black. The css uses the materializecss css library.
+    -   #### Typography
+        -   Uses the materializecss standard fonts.
+    -   #### Imagery
+        -   Theres one image, background image for all pages, this is an illustrative image of an italian pizza.
 
-Another blue button should appear to click: _Open Browser_.
+        #### Media
+        -  There are no particular media elements.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+        #### Social Media
+        -  The footer has all social media links with icons making it easy for the user to click
+        and follow. There is no added links to these, because this is a fictive site. But the icons are taken 
+        from fontawesome cdn. See base.html.
+    <h2 id="wireframes"></h2>
+-   ### Wireframes/Mockup
+-   There are no wireframes for this webpage
 
-To log into the Heroku toolbelt CLI:
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
-------
+## Features
 
-## Release History
+-   Fully interactive booking form, submitting the booking request to the heroku postgresql server. 
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+-   The booking form has input validation, and has included date and time pickers from the materializecss library.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+-   The user will be greeted with a booking confirmation if succesfully added to the database, this page also renders the 
+    booking details back to the user.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+-   Staff people for the resturant can login to the database to see the bookings, and do changes if necessary. The staff can login
+    to django admin by adding "/admin" to the url, and login with user: staff, pass: staff.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+-   The about and menu/booking sites is just fictive and illustrative for demonstration purposes only.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+-   The navbar is responsive, and uses side-nav functionality from materializecss during resizing to mobile/tablet devices.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+<h2 align="center">
+    <img src="assets/images/screenshots/contact/contact-pre.JPG">
+    <img src="assets/images/screenshots/contact/contact-after.JPG">
+</h2>
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+<h2 align="center">
+    <img src="assets/images/screenshots/devices/ipad-pro-about.JPG">
+    <img src="assets/images/screenshots/devices/ipad-pro-music.JPG">
+</h2>
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+## Features to be added/fixed
+-   Make images under “About” section smaller, becomes too big on desktop.
+-   Make the social media links more accesible.
+-   Indicate on the cover arts that they are clickable.
+-   When cover art is clicked, add a selection dialogue for the user to select preferred platform.
+-   Add more songs and videos to “Music” section
+-   Add more items for purchase, then add another section called “store”.
+-   Add funding/support option for volunteers/fans.
+-   Add calendar with live shows, own section.
+-   Add artistic animation to give the page a more dynamic feel.
+-   Add scrolling hint, so that the user is informed the webpage has more content and need to be scrolled.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+## Technologies Used
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### Languages Used
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+-   [HTML5](https://en.wikipedia.org/wiki/HTML5)
+-   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+-   [JavaScript](https://www.javascript.com/about)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### Frameworks, Libraries & Programs Used
+1. [EmailJs](https://www.emailjs.com/)
+    -EmailJs was used for interactivity on the contact form. Specifically to forward the contact form when submitted to a real email address.
+    Also to genereate auto replies back to the sender when contact form was submitted.
+1. [Hover.css:](https://ianlunn.github.io/Hover/)
+    - Hover.css was used on the navigation menu.
+11. [Git](https://git-scm.com/)
+    - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
+1. [GitHub:](https://github.com/)
+    - GitHub is used to store the projects code after being pushed from Git.
+1. [GitPod:](https://gitpod.io/)
+    - GitPod is used as the IDE for the project.
+1. [Figma:](https://figma.com/)
+    - Figma was used to create the [wireframes](#wireframes) during the design process.
+1. [Chrome-DevTools:](https://developer.chrome.com/docs/devtools/)
+    - Chrome DevTools was used to test responsiveness on all devices,to inspect html/css, and to debug the application.
+1.  [Am I Responsive?](http://ami.responsivedesign.is/)
+    - Am I Responsive? was used to create the screenshot of the website for all devices, the first image of the README.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
 
-------
+## Testing
 
-## FAQ about the uptime script
+The W3C Markup Validator, W3C CSS Validator, and JSHint JavaScript Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
-**Why have you added this script?**
+-   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](assets/validation/html-val.JPG)
+-   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](assets/validation/css-val.JPG)
+-   [JSHint JavaScript Validator](https://jshint.com/) - [Results](assets/validation/jshint.JPG)
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+### Testing User Stories from User Experience (UX) Section
 
-**How will this affect me?**
+-   #### New potential/existing fan
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+    1. I want to easily and efficiently follow the artist by accessing the social media links.
+        1. The user can easally access the artists social media in the footer. However this can be enhanced, because you have to scroll all the way down to the bottom of the page.
+    2. I want to easily and efficiently learn more about the artist.
+        1. The user can easily and efficiently learn more about the artist by selecting "About" from the navigation menu, or by scrolling half page.
+    3. I want to easily and efficiently browse and/or purchase the artist's contents.
+        1. The user can easily and efficiently  browse and/or purchase content from the "Music" section, either by scrolling or by selecting "Music" from the navigation.
+    4. I want to easily and efficiently get in touch with the artist for booking inqueries.
+        1. The user can easily and efficiently get in touch with the artist by selecting "Contact" from the navigation menu, or by scrolling down to the bottom of the page.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+-   #### New potential business person
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+    1. I want to easily and efficiently follow the artist by accessing the social media links.
+        1. The user can easally access the artists social media in the footer. However this can be enhanced, because you have to scroll all the way down to the bottom of the page.
+    2. I want to easily and efficiently learn more about the artist.
+        1. The user can easily and efficiently learn more about the artist by selecting "About" from the navigation menu, or by scrolling half page.
+    3. I want to easily and efficiently browse the artist's contents.
+        1. The user can easily and efficiently  browse content from the "Music" section, either by scrolling or by selecting "Music" from the navigation.
+    4. I want to easily and efficiently get in touch with the artist for business inqueries.
+        1. The user can easily and efficiently get in touch with the artist by selecting "Contact" from the navigation menu, or by scrolling down to the bottom of the page.
+ 
+### Further Testing
 
-**So….?**
+-   The Website was tested on Google Chrome, Vivaldi, Microsoft-Edge, Internet Explorer and Firefox .
+-   The website was viewed on a variety of devices such as Desktop, Laptop, iPhone10 X, Huawei P20 Pro, iPhone5, iPad and iPad pro.
+-   A large amount of testing was done to ensure that all pages were linking correctly.
+-   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+### Known Bugs
 
-**Can I opt out?**
+-   During test sessions, it was observed that the "home button", which is the artist logo in the top left, was not taking the page back to top. This was observed on chrome, but saw it rarely.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+## Deployment
+
+### GitHub Pages
+
+The project was deployed to GitHub Pages using the following steps...
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/nno24/javascript-p02)
+2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
+    - Alternatively Click [Here](https://raw.githubusercontent.com/) for a GIF demonstrating the process starting from Step 2.
+3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
+4. Under "Source", click the dropdown called "None" and select "Master Branch".
+5. The page will automatically refresh.
+6. Scroll back down through the page to locate the now published site [link](https://github.com/nno24/javascript-p02) in the "GitHub Pages" section.
+
+### Forking the GitHub Repository
+
+By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps...
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/nno24/javascript-p02)
+2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. You should now have a copy of the original repository in your GitHub account.
+
+### Making a Local Clone
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/nno24/javascript-p02)
+2. Under the repository name, click "Clone or download".
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+4. Open Git Bash
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL you copied in Step 3.
 
 ```
-pkill uptime.sh
-rm .vscode/uptime.sh
+$ git clone https://github.com/nno24/javascript-p02
 ```
 
-**Anything more?**
+7. Press Enter. Your local clone will be created.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+```
+$ git clone https://github.com/nno24/javascript-p02
+> Cloning into `CI-Clone`...
+> remote: Counting objects: 10, done.
+> remote: Compressing objects: 100% (8/8), done.
+> remove: Total 10 (delta 1), reused 10 (delta 1)
+> Unpacking objects: 100% (10/10), done.
+```
 
----
+Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
 
-Happy coding!
+## Credits
+1. Nikolay Cranner's artwork and media/music.
+2. Friends and family for critical feedback during review.
+3. Coding ideas on how to validate input fields for the contact form [here](https://www.w3schools.com/js/js_validation.asp)
+
+### Code
+
+-   The about pictures of the artist came from [Instagram](https://www.instagram.com/nikolay_cranner/)
+
+-   The embedded videos came from [Youtube](https://www.youtube.com/channel/UC5ntUYnW40FCXeuowJYUOPw)
+
+-   The embedded music for purchase came from [Beatport](https://www.beatport.com/artist/nikolay-cranner/709007)
+
+-   The embedded music for streaming came from [Spotify](https://open.spotify.com/artist/4NvkvOJ0mDM7QjdzOZLDRd?si=QshNNTHJQRab-LCm2i6Osw&dl_branch=1)
+
+### Content
+
+-   All content was written by the developer.
+
+### Media
+
+- Proprietary images and logo was used with acceptance from Nikolay Cranner.
+
+### Acknowledgements
+
+-   My Mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/?originalSubdomain=ng) for continuous helpful feedback.
+
+-   Tutor support at Code Institute for their support.
