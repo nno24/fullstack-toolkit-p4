@@ -6,7 +6,7 @@ This is the official page for Pizza Heaven. It is designed to be responsive and 
 The booking system offers a staff user to see the bookings in the databse, via the admin page. And customers can place new booking with date, time, and number of people. They also have to incude an email address. For the production environment, the send mail function is not activated, but it's implemented.
 
 <h2 align="center">
-    <img src="assets/images/screenshots/devices/frontpage.JPG">
+    <img src="assets/pizza-heaven-responsive.PNG">
 </h2>
 
 ## User Experience (UX)
@@ -60,27 +60,24 @@ The booking system offers a staff user to see the bookings in the databse, via t
 -   The navbar is responsive, and uses side-nav functionality from materializecss during resizing to mobile/tablet devices.
 
 <h2 align="center">
-    <img src="assets/images/screenshots/contact/contact-pre.JPG">
-    <img src="assets/images/screenshots/contact/contact-after.JPG">
+    <img src="assets/screenshots/pizza-heaven-booking.PNG">
+    <img src="assets/screenshots/pizza-heaven-booking-time.PNG">
 </h2>
 
 <h2 align="center">
-    <img src="assets/images/screenshots/devices/ipad-pro-about.JPG">
-    <img src="assets/images/screenshots/devices/ipad-pro-music.JPG">
+    <img src="assets/screenshots/pizza-heaven-conf.PNG">
+    <img src="assets/screenshots/pizza-heaven-sidenav.PNG">
+    <img src="assets/screenshots/booking-admin.PNG">
 </h2>
 
 
 ## Features to be added/fixed
--   Make images under “About” section smaller, becomes too big on desktop.
--   Make the social media links more accesible.
--   Indicate on the cover arts that they are clickable.
--   When cover art is clicked, add a selection dialogue for the user to select preferred platform.
--   Add more songs and videos to “Music” section
--   Add more items for purchase, then add another section called “store”.
--   Add funding/support option for volunteers/fans.
--   Add calendar with live shows, own section.
--   Add artistic animation to give the page a more dynamic feel.
--   Add scrolling hint, so that the user is informed the webpage has more content and need to be scrolled.
+-   Set a limit for how many can book in the same time duration at the same date.
+    This info must be rendered to the user when before submitting the form.
+-   Give the user the possibility to cancel or change their booking from the webpage.
+-   Complete the menu/book with some more usable menu content - pizza types etc.
+-   Complete the send mail functionality in production environment, this was tested sucecssfully in development.
+    This is the functionality that sends the email to the actual client, with the booking confrimation.
 
 ## Technologies Used
 
@@ -89,21 +86,25 @@ The booking system offers a staff user to see the bookings in the databse, via t
 -   [HTML5](https://en.wikipedia.org/wiki/HTML5)
 -   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
 -   [JavaScript](https://www.javascript.com/about)
+-   [Python](https://www.python.org/)
 
 ### Frameworks, Libraries & Programs Used
-1. [EmailJs](https://www.emailjs.com/)
-    -EmailJs was used for interactivity on the contact form. Specifically to forward the contact form when submitted to a real email address.
-    Also to genereate auto replies back to the sender when contact form was submitted.
-1. [Hover.css:](https://ianlunn.github.io/Hover/)
-    - Hover.css was used on the navigation menu.
+1. [django](https://www.djangoproject.com/)
+    - Django is a high-level Python fullstack web framework that was used for implementing the MVC.
+1. [heroku:](https://dashboard.heroku.com/)
+    - Used for production, hosting service for the app with the postgresql
+1. [Cloudinary:](https://cloudinary.com/)
+    - Cloudinary was used to host the static files, like custom css, javascript and images.
+1. [Materializecss:](https://materializecss.com/)
+    - Materializecss was used for css and date/time pickers.
+1. [Fontawesome:](https://fontawesome.com/)
+    - Fontawesome was used for icons in the socials section in the footer
 11. [Git](https://git-scm.com/)
     - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
 1. [GitHub:](https://github.com/)
     - GitHub is used to store the projects code after being pushed from Git.
 1. [GitPod:](https://gitpod.io/)
     - GitPod is used as the IDE for the project.
-1. [Figma:](https://figma.com/)
-    - Figma was used to create the [wireframes](#wireframes) during the design process.
 1. [Chrome-DevTools:](https://developer.chrome.com/docs/devtools/)
     - Chrome DevTools was used to test responsiveness on all devices,to inspect html/css, and to debug the application.
 1.  [Am I Responsive?](http://ami.responsivedesign.is/)
@@ -113,72 +114,31 @@ The booking system offers a staff user to see the bookings in the databse, via t
 
 ## Testing
 
-The W3C Markup Validator, W3C CSS Validator, and JSHint JavaScript Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
-
--   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](assets/validation/html-val.JPG)
--   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) - [Results](assets/validation/css-val.JPG)
--   [JSHint JavaScript Validator](https://jshint.com/) - [Results](assets/validation/jshint.JPG)
-
-### Testing User Stories from User Experience (UX) Section
-
--   #### New potential/existing fan
-
-    1. I want to easily and efficiently follow the artist by accessing the social media links.
-        1. The user can easally access the artists social media in the footer. However this can be enhanced, because you have to scroll all the way down to the bottom of the page.
-    2. I want to easily and efficiently learn more about the artist.
-        1. The user can easily and efficiently learn more about the artist by selecting "About" from the navigation menu, or by scrolling half page.
-    3. I want to easily and efficiently browse and/or purchase the artist's contents.
-        1. The user can easily and efficiently  browse and/or purchase content from the "Music" section, either by scrolling or by selecting "Music" from the navigation.
-    4. I want to easily and efficiently get in touch with the artist for booking inqueries.
-        1. The user can easily and efficiently get in touch with the artist by selecting "Contact" from the navigation menu, or by scrolling down to the bottom of the page.
-
--   #### New potential business person
-
-    1. I want to easily and efficiently follow the artist by accessing the social media links.
-        1. The user can easally access the artists social media in the footer. However this can be enhanced, because you have to scroll all the way down to the bottom of the page.
-    2. I want to easily and efficiently learn more about the artist.
-        1. The user can easily and efficiently learn more about the artist by selecting "About" from the navigation menu, or by scrolling half page.
-    3. I want to easily and efficiently browse the artist's contents.
-        1. The user can easily and efficiently  browse content from the "Music" section, either by scrolling or by selecting "Music" from the navigation.
-    4. I want to easily and efficiently get in touch with the artist for business inqueries.
-        1. The user can easily and efficiently get in touch with the artist by selecting "Contact" from the navigation menu, or by scrolling down to the bottom of the page.
- 
-### Further Testing
-
--   The Website was tested on Google Chrome, Vivaldi, Microsoft-Edge, Internet Explorer and Firefox .
--   The website was viewed on a variety of devices such as Desktop, Laptop, iPhone10 X, Huawei P20 Pro, iPhone5, iPad and iPad pro.
--   A large amount of testing was done to ensure that all pages were linking correctly.
--   Friends and family members were asked to review the site and documentation to point out any bugs and/or user experience issues.
-
-### Known Bugs
-
--   During test sessions, it was observed that the "home button", which is the artist logo in the top left, was not taking the page back to top. This was observed on chrome, but saw it rarely.
+No testing was performed in this project. There was a very limited time, but the conceps for implementing a simple fullstack website in django was demonstrated.
 
 ## Deployment
 
-### GitHub Pages
+### Heroku
 
-The project was deployed to GitHub Pages using the following steps...
+The project was deployed to Heroku using the following steps...
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/nno24/javascript-p02)
-2. At the top of the Repository (not top of page), locate the "Settings" Button on the menu.
-    - Alternatively Click [Here](https://raw.githubusercontent.com/) for a GIF demonstrating the process starting from Step 2.
-3. Scroll down the Settings page until you locate the "GitHub Pages" Section.
-4. Under "Source", click the dropdown called "None" and select "Master Branch".
-5. The page will automatically refresh.
-6. Scroll back down through the page to locate the now published site [link](https://github.com/nno24/javascript-p02) in the "GitHub Pages" section.
+1. Signup to heroku
+2. Created the appname
+3. Added environment variables and heroku postgresql
+4. Attached the git repo to heroku, under deploy tab.
+5. Deployed from heroku web interface
 
 ### Forking the GitHub Repository
 
 By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps...
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/nno24/javascript-p02)
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/nno24/fullstack-toolkit-p4)
 2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
 3. You should now have a copy of the original repository in your GitHub account.
 
 ### Making a Local Clone
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/nno24/javascript-p02)
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/nno24/fullstack-toolkit-p4)
 2. Under the repository name, click "Clone or download".
 3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
 4. Open Git Bash
@@ -186,13 +146,13 @@ By forking the GitHub Repository we make a copy of the original repository on ou
 6. Type `git clone`, and then paste the URL you copied in Step 3.
 
 ```
-$ git clone https://github.com/nno24/javascript-p02
+$ git clone https://github.com/nno24/fullstack-toolkit-p4
 ```
 
 7. Press Enter. Your local clone will be created.
 
 ```
-$ git clone https://github.com/nno24/javascript-p02
+$ git clone https://github.com/nno24/fullstack-toolkit-p4
 > Cloning into `CI-Clone`...
 > remote: Counting objects: 10, done.
 > remote: Compressing objects: 100% (8/8), done.
@@ -203,19 +163,13 @@ $ git clone https://github.com/nno24/javascript-p02
 Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
 
 ## Credits
-1. Nikolay Cranner's artwork and media/music.
-2. Friends and family for critical feedback during review.
-3. Coding ideas on how to validate input fields for the contact form [here](https://www.w3schools.com/js/js_validation.asp)
+1. Awesome django documentation
+2. Stackoverflow at times, and some youtube videos came handy to get django more in the fingers.
 
 ### Code
 
--   The about pictures of the artist came from [Instagram](https://www.instagram.com/nikolay_cranner/)
+-   The pizza background image came from [Motionarray](https://motionarray.com/) with the right licence to use.
 
--   The embedded videos came from [Youtube](https://www.youtube.com/channel/UC5ntUYnW40FCXeuowJYUOPw)
-
--   The embedded music for purchase came from [Beatport](https://www.beatport.com/artist/nikolay-cranner/709007)
-
--   The embedded music for streaming came from [Spotify](https://open.spotify.com/artist/4NvkvOJ0mDM7QjdzOZLDRd?si=QshNNTHJQRab-LCm2i6Osw&dl_branch=1)
 
 ### Content
 
@@ -223,7 +177,7 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 
 ### Media
 
-- Proprietary images and logo was used with acceptance from Nikolay Cranner.
+- N/A
 
 ### Acknowledgements
 
