@@ -29,8 +29,10 @@
         <li><a href="/about">About</a></li>
       </ul>
   </header>
-  <main style="background-image: url('{% static "booking/img/background.jpg" %}');">
+  <main>
   <section>
+    <div class="background-img" style="background-image: url('{% static "booking/img/background.jpg" %}');">
+    </div>
     {% block content %}
     {% endblock %}
   </section>

@@ -4,26 +4,26 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: whitesmoke;
   }
 
 
 main {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     flex: 1 0 auto;
 }
 
-.greeting {
-    color: white;
-    background-color: rgb(36, 20, 20);
-    opacity: 0.6;
-    border-radius: 2rem;
-    margin-top: 2rem;
+.background-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 15vh;
+    z-index: -1;
+
 }
 
-h3, p, .forminput {
-    color: white;
+h3, p, .forminput, input {
+    color: black;
 }
 
 .sidenav li>a {
