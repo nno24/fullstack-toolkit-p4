@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
+from django.contrib import sessions
 from .models import Booking
 from .forms import BookingForm
+
 
 
 def push_email(date, time, email, name, people):
@@ -28,8 +30,7 @@ def get_booking(request):
     return render(request, 'booking/book.html')
 
 def greeting(request):
-    booking = Booking.objects.last()
-
+    booking = Booking.objects.get(id=request.session['user_id'])
     context = {
         'booking': booking
     }
@@ -39,14 +40,18 @@ def form_view(request):
     form = BookingForm(request.POST or None)
     if form.is_valid():
         form.save()
-        
+# Get the session/user id 
+        booking = Booking.objects.last()
+        request.session['user_id']=booking.id
+
+# This block is not needed...
         form_date = request.POST['date']
         form_time = request.POST['time']
         form_name = request.POST['name']
         form_people = request.POST['people']
         form_email = request.POST['email']
 
-        #push_email(form_date, form_time, form_email, form_name, form_people)
+# Push_email(form_date, form_time, form_email, form_name, form_people)
         form = BookingForm()
 
         return redirect('greeting')
@@ -56,3 +61,56 @@ def form_view(request):
     }
 
     return render(request, 'booking/form.html', context)
+
+def manage(request):
+    """A view to manage the booking"""
+
+    if request.POST:
+# Grab the changes in booking form and save to db
+        this_booking = Booking.objects.get(id=request.session['user_id'])
+        form = BookingForm(request.POST, instance=this_booking)
+        if form.is_valid():
+            form.save()
+            return redirect('greeting')
+# If no post request, view what's already in the database
+    else:
+        try:        
+            this_booking = Booking.objects.get(id=request.session['user_id'])
+            form = BookingForm(instance=this_booking)
+        except:
+            return redirect('home')
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'booking/manage.html', context)
+
+
+def cancel(request):
+    """A view to cancel booking"""
+
+#Delete the booking
+    try:
+        booking = Booking.objects.get(id=request.session['user_id'])
+        booking.delete()
+    except:
+        return redirect('manage')
+
+    context = {
+        'booking': booking,
+    }
+
+    return render(request, 'booking/cancel.html', context)
+
+
+def bookings(request):
+    """A view to display the current users bookings"""
+    try:
+        booking = Booking.objects.get(id=request.session['user_id'])    
+    except:
+        return render(request, 'booking/nobookings.html')
+
+    context = {
+        'booking': booking,
+    }        
+    return render(request, 'booking/bookings.html', context)

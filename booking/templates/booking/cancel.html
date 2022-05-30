@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container greeting">
+    <div class="row">
+      <div class="col s12 center">
+        <h3>Your booking was cancelled</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>For</th>
+              <th>Email</th>
+              <th>People</th>
+              <th>Date</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tr class="booking-cancelled">
+            <td>{{ booking.name }}</td>
+            <td>{{ booking.email }}</td>
+            <td>{{ booking.people }}</td>
+            <td>{{ booking.date }}</td>
+            <td>{{ booking.time }}</td>
+          </tr>
+        </table>
+          <a class="waves-effect waves-light btn-small" href="/form/">Book Now</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

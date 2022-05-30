@@ -25,4 +25,8 @@ urlpatterns = [
     path('home/', views.back_home, name='home'),
     path('form/', views.form_view, name='form'),
     path('greeting', views.greeting, name='greeting'),
+    path('manage/', views.manage, name='manage'),
+    path('cancel/', views.cancel, name='cancel'),
+    path('bookings/', views.bookings, name='bookings'),
+    path('nobookings/', views.bookings, name='nobookings'),
 ]

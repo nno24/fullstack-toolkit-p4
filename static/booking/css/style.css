@@ -32,5 +32,17 @@ h3, p, .forminput, input {
     margin: 2rem;
 }
 
+.waves-effect {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
+.ux {
+    margin-right: 3%;
+    margin-left: 3%;
+}
+
+.booking-cancelled {
+    text-decoration: line-through;
+}
 
