@@ -8,9 +8,10 @@ body {
 
 
 main {
-    flex: 1 0 auto;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    flex: 1 0 auto;
 }
 
 .greeting {
