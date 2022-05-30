@@ -18,38 +18,46 @@ def push_email(date, time, email, name, people):
 
 
 def get_home(request):
+    """ A view to display the home page"""
+    
     return render(request, 'booking/home.html')
 
 def get_about(request):
+    """A view to display the about page"""
+
     return render(request, 'booking/about.html')
     
 def back_home(request):
+    """A view to got back home"""
+
     return render(request, 'booking/home.html')
 
 def get_booking(request):
+    """"A view to display menu and booking button"""
+
     return render(request, 'booking/book.html')
 
 def greeting(request):
+    """A view to display successful booking"""
+
     booking = Booking.objects.get(id=request.session['user_id'])
     context = {
-        'booking': booking
+        'booking': booking,
     }
     return render(request, 'booking/greeting.html', context)
 
 def form_view(request):
+    """A view to render the input form and save new booking to db"""
+
     form = BookingForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        try:
+            form.save()
+        except:
+            return redirect('error')
 # Get the session/user id 
         booking = Booking.objects.last()
         request.session['user_id']=booking.id
-
-# This block is not needed...
-        form_date = request.POST['date']
-        form_time = request.POST['time']
-        form_name = request.POST['name']
-        form_people = request.POST['people']
-        form_email = request.POST['email']
 
 # Push_email(form_date, form_time, form_email, form_name, form_people)
         form = BookingForm()
@@ -70,11 +78,14 @@ def manage(request):
         this_booking = Booking.objects.get(id=request.session['user_id'])
         form = BookingForm(request.POST, instance=this_booking)
         if form.is_valid():
-            form.save()
-            return redirect('greeting')
+            try:
+                form.save()
+                return redirect('greeting')
+            except:
+                return redirect('error')
 # If no post request, view what's already in the database
     else:
-        try:        
+        try:  
             this_booking = Booking.objects.get(id=request.session['user_id'])
             form = BookingForm(instance=this_booking)
         except:
@@ -94,7 +105,7 @@ def cancel(request):
         booking = Booking.objects.get(id=request.session['user_id'])
         booking.delete()
     except:
-        return redirect('manage')
+        return redirect('error')
 
     context = {
         'booking': booking,
@@ -114,3 +125,13 @@ def bookings(request):
         'booking': booking,
     }        
     return render(request, 'booking/bookings.html', context)
+
+
+def error(request):
+    """A view to display error message"""
+
+    context = {
+
+    }
+
+    return render(request, 'booking/error.html', context)

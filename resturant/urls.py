@@ -29,4 +29,5 @@ urlpatterns = [
     path('cancel/', views.cancel, name='cancel'),
     path('bookings/', views.bookings, name='bookings'),
     path('nobookings/', views.bookings, name='nobookings'),
+    path('error/', views.error, name='error'),
 ]
