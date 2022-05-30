@@ -150,7 +150,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles-cdn') # for production, we don
 
 MEDIA_URL = '/media/'
 
-if 'CLOUDINARY_STORAGE' in os.environ:
+if 'CLOUDINARY_URL' in os.environ:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
