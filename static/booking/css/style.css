@@ -46,3 +46,16 @@ h3, p, .forminput, input {
     text-decoration: line-through;
 }
 
+hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/*Google signin align to center*/
+.g-signin2{
+    width: 100%;
+}
+
+.g-signin2 > div{
+    margin: 0 auto;
+}
