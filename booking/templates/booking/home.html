@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load socialaccount %}
 {% block content %}
   <div class="container">
     <div class="row">
@@ -6,6 +7,13 @@
         <h3>Welcome to Pizza Haeven!</h3>
         <p>We are proud of our selctions of italian pizza..</p>
         <a class="waves-effect waves-light btn-small" href="/form/">Book Now</a>
+        {% if user.is_authenticated %}
+          <p>Welcome, {{ user.username }} !</p>
+    
+        {% else %}
+          <h1>My Google Login Project</h1>
+          <a href="{% provider_login_url 'google' %}">Login with Google</a>
+        {% endif %}   
       </div>
     </div>
   </div>
