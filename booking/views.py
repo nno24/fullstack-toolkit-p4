@@ -37,10 +37,13 @@ def get_booking(request):
 
     return render(request, 'booking/book.html')
 
-def greeting(request):
+def greeting(request, booking_id):
     """A view to display successful booking"""
 
-    booking = Booking.objects.get(id=request.session['booking_id'])
+    if request.user.is_authenticated:
+        booking = Booking.objects.get(id=booking_id, user=request.user.username)
+    else:
+        booking = Booking.objects.get(id=request.session['booking_id'])
     context = {
         'booking': booking,
     }
@@ -55,14 +58,18 @@ def form_view(request):
             form.save()
         except:
             return redirect('error')
-# Get the session/user id 
+# Get the booking id
         booking = Booking.objects.last()
         request.session['booking_id']=booking.id
 
-# Push_email(form_date, form_time, form_email, form_name, form_people)
+# If user is authenticated, save the username to the booking.        
+        if request.user.is_authenticated:
+            booking.user = request.user.username
+            booking.save()
+
         form = BookingForm()
 
-        return redirect('greeting')
+        return redirect('greeting', booking_id=booking.id)
     
     context = {
         'form': form
@@ -70,39 +77,52 @@ def form_view(request):
 
     return render(request, 'booking/form.html', context)
 
-def manage(request):
+def manage(request, booking_id ):
     """A view to manage the booking"""
 
     if request.POST:
-# Grab the changes in booking form and save to db
-        this_booking = Booking.objects.get(id=request.session['booking_id'])
+# Grab the booking depending if authenticated or not.
+        if request.user.is_authenticated:
+            this_booking = Booking.objects.get(id=booking_id, user=request.user.username)
+        else:
+            this_booking = Booking.objects.get(id=request.session['booking_id'])
+
         form = BookingForm(request.POST, instance=this_booking)
         if form.is_valid():
             try:
                 form.save()
-                return redirect('greeting')
+                return redirect('greeting', booking_id=this_booking.id)
             except:
                 return redirect('error')
 # If no post request, view what's already in the database
     else:
-        try:  
-            this_booking = Booking.objects.get(id=request.session['booking_id'])
+        try:
+            if request.user.is_authenticated:
+                this_booking = Booking.objects.get(id=booking_id, user=request.user.username)
+            else:  
+                this_booking = Booking.objects.get(id=request.session['booking_id'])
+
             form = BookingForm(instance=this_booking)
         except:
             return redirect('home')
     context = {
         'form': form,
+        'this_booking': this_booking,
     }
 
     return render(request, 'booking/manage.html', context)
 
 
-def cancel(request):
+def cancel(request, booking_id):
     """A view to cancel booking"""
 
 #Delete the booking
     try:
-        booking = Booking.objects.get(id=request.session['booking_id'])
+        if request.user.is_authenticated:
+            booking = Booking.objects.get(id=booking_id, user=request.user.username)
+        else:
+            booking = Booking.objects.get(id=request.session['booking_id'])
+            
         booking.delete()
     except:
         return redirect('error')
@@ -117,12 +137,17 @@ def cancel(request):
 def bookings(request):
     """A view to display the current users bookings"""
     try:
-        booking = Booking.objects.get(id=request.session['booking_id'])    
+# If the user is authenticated, grab all bookings related to the user
+# If not, grab a single booking made by an anonymious user    
+        if request.user.is_authenticated:
+            bookings = Booking.objects.filter(user=request.user.username)
+        else:
+            bookings = Booking.objects.get(id=request.session['booking_id'])    
     except:
         return render(request, 'booking/nobookings.html')
 
     context = {
-        'booking': booking,
+        'bookings': bookings,
     }        
     return render(request, 'booking/bookings.html', context)
 

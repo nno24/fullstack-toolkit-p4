@@ -5,7 +5,7 @@
       <div class="col s12 center">
         <div class="row">
           <h5>Manage Booking</h5>
-          <form class="col s12" method="POST">
+          <form class="col s12" method="POST" action="{% url 'manage' this_booking.id %}">
             {% csrf_token %}
             {{ form.as_table }}
             <button class="btn waves-effect waves-light" type="submit">Save Changes</button>
@@ -21,7 +21,7 @@
                 <p>Are you sure you want to cancel your current booking?</p>
                 </div>
                 <div class="modal-footer">
-                <a href="/cancel/" class="modal-close waves-effect waves-green btn-flat">YES</a>
+                <a href="{% url 'cancel' this_booking.id %}" class="modal-close waves-effect waves-green btn-flat">YES</a>
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">NO</a>
                 </div>
             </div>

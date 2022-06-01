@@ -63,6 +63,15 @@ li>a:hover {
 .dropdown-trigger-mobile {
     font-size: 1.5rem !important;
 }
+
+
+.btn-bookings {
+    margin-top: 60px;
+}
+
+
+
+
 /*Google signin align to center*/
 .g-signin2{
     width: 100%;

@@ -11,6 +11,7 @@ class Booking(models.Model):
     people = models.IntegerField(default=2)
     date = models.DateField(default=tz.now)
     time = models.TimeField(default=time(18, 00))
+    user = models.CharField(max_length=200, null=False, blank=False, default='guest')
     
     def __str__(self):
         return f'{self.name}  |  {self.people}  |  {self.date}  {self.time}'

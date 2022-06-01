@@ -22,7 +22,7 @@
           <td>{{ booking.time }}</td>
         </tr>
       </table>
-        <a class="waves-effect waves-light btn-small" href="/manage/">Manage</a>
+        <a class="waves-effect waves-light btn-small" href="{% url 'manage' booking.id %}" id="{{ booking.id }}">Manage</a>
     </div>
   </div>
 </div>

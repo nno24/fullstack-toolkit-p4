@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container greeting">
+  <div class="row center">
+    <h3>Your bookings</h3>
+  </div>
+  {% for booking in bookings %}
   <div class="row">
-    <div class="col s12 center">
-      <h3>Your booking</h3>
+    <div class="col s10">
       <table>
         <thead>
           <tr>
@@ -22,8 +25,11 @@
           <td>{{ booking.time }}</td>
         </tr>
       </table>
-        <a class="waves-effect waves-light btn-small" href="/manage/">Manage</a>
+    </div>
+    <div class="col s2">
+      <a class="waves-effect waves-light btn-small btn-bookings" href="{% url 'manage' booking.id %}" id="{{ booking.id }}">Manage</a>
     </div>
   </div>
+  {% endfor %}
 </div>
 {% endblock %}
