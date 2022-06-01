@@ -55,7 +55,17 @@ def form_view(request):
     form = BookingForm(request.POST or None)
     if form.is_valid():
         try:
-            form.save()
+            if request.user.is_authenticated:
+                form.save()
+            else:
+# Check if the anonymious user already have a booking, and remove the existing one if so
+                try:
+                    last_booking = Booking.objects.get(id=request.session['booking_id'])
+                    last_booking.delete()
+                    print("deleted previous booking")
+                    form.save()
+                except:
+                    form.save()           
         except:
             return redirect('error')
 # Get the booking id
@@ -142,9 +152,12 @@ def bookings(request):
         if request.user.is_authenticated:
             bookings = Booking.objects.filter(user=request.user.username)
         else:
-            bookings = Booking.objects.get(id=request.session['booking_id'])    
+            bookings = Booking.objects.filter(id=request.session['booking_id'])
+# Check if the queryset exist or not, if not show no bookings        
+        if not bookings.exists():
+            return render(request, 'booking/nobookings.html')
     except:
-        return render(request, 'booking/nobookings.html')
+        return redirect('error')
 
     context = {
         'bookings': bookings,
