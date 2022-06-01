@@ -9,10 +9,15 @@
         <a class="waves-effect waves-light btn-small" href="/form/">Book Now</a>
         {% if user.is_authenticated %}
           <p>Welcome, {{ user.username }} !</p>
+          <a href="/accounts/logout">Logout</a>
         {% else %}
           <p>Login for a better booking experience</p>
           <hr>
             <a href="{% provider_login_url 'google' %}">Continue with Google</a>
+            <br>
+            <p>or..</p>
+            <br>
+            <a href="/accounts/login">Login with username/email</a>
         {% endif %}   
       </div>
     </div>

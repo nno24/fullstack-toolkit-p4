@@ -14,7 +14,9 @@ M.Timepicker.init(Time,{
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, {});
+    var instances = M.Sidenav.init(elems, {
+      'edge': 'right',
+    });
   });
 
 
@@ -23,4 +25,15 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, {});
+  });
+
+
+//Initialize dropdown
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, {
+      'coverTrigger': false,
+      'inDuration': 500,
+      'outDuration': 300,
+    });
   });

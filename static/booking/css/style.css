@@ -28,8 +28,9 @@ h3, p, .forminput, input {
 
 .sidenav li>a {
     color: white;
-    font-size: 2rem;
-    margin: 2rem;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .waves-effect {
@@ -51,6 +52,17 @@ hr {
     margin-bottom: 30px;
 }
 
+.material-icons, li>a {
+    color: white !important;
+}
+
+li>a:hover {
+    transition-duration: 1s;
+}
+
+.dropdown-trigger-mobile {
+    font-size: 1.5rem !important;
+}
 /*Google signin align to center*/
 .g-signin2{
     width: 100%;

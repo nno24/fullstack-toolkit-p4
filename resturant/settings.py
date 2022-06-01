@@ -140,7 +140,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-CSRF_TRUSTED_ORIGINS="https://8000-nno24-fullstacktoolkit-ilscpkvth0c.ws-eu46.gitpod.io"
+CSRF_TRUSTED_ORIGINS = ["https://8000-nno24-fullstacktoolkit-ilscpkvth0c.ws-eu46.gitpod.io"]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -179,19 +179,27 @@ EMAIL_USE_TLS = True
 
 
 #Django Allauth Settings ------------------------------------------------
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
 ]
 
+#Allauth config
 SITE_ID = 1
+ACCOUNT_EMAIL_REQUIRED=False
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE=False
+ACCOUNT_AUTHENTICATION_METHOD='username_email'
+ACCOUNT_EMAIL_VERIFICATION='none'
+ACCOUNT_USERNAME_MIN_LENGTH=4
+LOGIN_URL ='/accounts/login'
 LOGIN_REDIRECT_URL = '/'
 
-# Additional configuration settings
+
+# Additional configuration settings socialaccount
 SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_LOGOUT_ON_GET= True
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_EMAIL_REQUIRED = True
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
