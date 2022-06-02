@@ -4,6 +4,11 @@
   <div class="row">
     <div class="col s12 center">
       <div class="row">
+        {% if messages %}
+        {% for msg in messages %}
+        <p class="msg-error">{{msg}}</p>
+        {% endfor %}
+        {% endif %}
         <h5>Booking Form</h5>
         <form class="col s12" method="POST">
           {% csrf_token %}

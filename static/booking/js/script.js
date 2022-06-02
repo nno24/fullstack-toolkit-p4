@@ -1,8 +1,11 @@
+var today = new Date();
+
 // Initialize date and time pickers materialize
 
 const Calendar = document.querySelector('.datepicker');
 M.Datepicker.init(Calendar,{
-    format: 'yyyy-mm-dd'
+    format: 'yyyy-mm-dd',
+    minDate: new Date(today.getFullYear(),today.getMonth(),today.getDate()),
 })
 
 const Time = document.querySelector('.timepicker');

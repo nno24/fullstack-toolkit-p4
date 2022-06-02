@@ -70,7 +70,11 @@ li>a:hover {
 }
 
 
-
+.msg-error {
+    background-color: red;
+    color: white;
+    opacity: 0.5;
+}
 
 /*Google signin align to center*/
 .g-signin2{

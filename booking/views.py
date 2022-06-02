@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail
-from django.contrib import sessions
+from django.contrib import sessions, messages
 from .models import Booking
 from .forms import BookingForm
+from datetime import datetime
 
 
 
@@ -60,19 +61,21 @@ def form_view(request):
     form = BookingForm(request.POST or None)
     if form.is_valid():
         try:
-            if request.user.is_authenticated:
-                form.save()
-            else:
-# Check if the anonymious user already have a booking, and remove the existing one if so
-                try:
-                    last_booking = Booking.objects.get(id=request.session['booking_id'])
-                    last_booking.delete()
-                    print("deleted previous booking")
-                    form.save()
-                except:
-                    form.save()           
+# Don't accept bookings in the past, so if today and earlier today            
+            date = form.cleaned_data.get('date')
+            time = form.cleaned_data.get('time')
+            today_date = datetime.today().strftime('%Y-%m-%d')
+            today_time = datetime.today().strftime('%H:%M:%S')
+            if str(today_date) == str(date) and str(today_time) > str(time):
+                messages.error(request, "Your booking time is invalid..")
+                context = {
+                    'form': form,
+                }
+                return render(request, 'booking/form.html', context)
+
+            form.save()         
         except:
-            return redirect('error')
+            return redirect('form')
 # Get the booking id
         booking = Booking.objects.last()
         request.session['booking_id']=booking.id
