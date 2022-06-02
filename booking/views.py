@@ -37,6 +37,11 @@ def get_booking(request):
 
     return render(request, 'booking/book.html')
 
+def bookinglimit(request):
+    """A view to display bookinglimit for anonymious users"""
+
+    return render(request, 'booking/bookinglimit.html')
+
 def greeting(request, booking_id):
     """A view to display successful booking"""
 
@@ -81,6 +86,14 @@ def form_view(request):
 
         return redirect('greeting', booking_id=booking.id)
     
+# Check if anonymious user already have a booking
+    if not request.user.is_authenticated:
+        try:
+            last_booking = Booking.objects.get(id=request.session['booking_id'])
+            return redirect('bookinglimit')
+        except:
+            pass
+
     context = {
         'form': form
     }

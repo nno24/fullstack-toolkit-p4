@@ -31,4 +31,5 @@ urlpatterns = [
     path('nobookings/', views.bookings, name='nobookings'),
     path('error/', views.error, name='error'),
     path('accounts/', include('allauth.urls')),
+    path('bookinglimit/', views.bookinglimit, name='bookinglimit'),
 ]
