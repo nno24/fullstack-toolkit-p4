@@ -48,19 +48,19 @@
     </ul>
     <nav>
         <div class="nav-wrapper cyan darken-4">
-          <a href="/home/" class="brand-logo center">Pizza Heaven</a>
+          <a href="{% url 'home' %}" class="brand-logo center">Pizza Heaven</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/book">Menu/Book</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="{% url 'form' %}">Book</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
             <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons left">portrait</i>{{ request.user.username|default:'guest' }}<i class="material-icons right">arrow_drop_down</i></a></li>
           </ul>
         </div>
       </nav>
       <ul class="sidenav cyan darken-4" id="mobile-demo">
-        <li ><a href="/home/">Home</a></li>
-        <li ><a href="/book">Menu/Book</a></li>
-        <li><a href="/about">About</a></li>
+        <li ><a href="{% url 'home' %}">Home</a></li>
+        <li ><a href="{% url 'form' %}">Book</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
         <li class="divider" tabindex="-1"></li>
         <li><a class="dropdown-trigger dropdown-trigger-mobile" href="#!" data-target="dropdown2"><i class="material-icons left">portrait</i>{{ request.user.username|default:'guest' }}<i class="material-icons right">arrow_drop_down</i></a></li>   
       </ul>

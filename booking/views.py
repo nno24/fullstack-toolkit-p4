@@ -18,25 +18,16 @@ def push_email(date, time, email, name, people):
 # Create your views here.
 
 
-def get_home(request):
+def home(request):
     """ A view to display the home page"""
     
     return render(request, 'booking/home.html')
 
-def get_about(request):
+def about(request):
     """A view to display the about page"""
 
     return render(request, 'booking/about.html')
     
-def back_home(request):
-    """A view to got back home"""
-
-    return render(request, 'booking/home.html')
-
-def get_booking(request):
-    """"A view to display menu and booking button"""
-
-    return render(request, 'booking/book.html')
 
 def bookinglimit(request):
     """A view to display bookinglimit for anonymious users"""
