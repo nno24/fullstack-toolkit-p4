@@ -92,7 +92,17 @@ def form_view(request):
                     'form': form,
                 }
                 return render(request, 'booking/form.html', context)
-            form.save()
+
+            elif str(today_date) > str(date):
+                messages.error(request, "Your booking date is invalid..")
+                context = {
+                    'form': form,
+                }
+                return render(request, 'booking/form.html', context)
+
+            else:
+                form.save()
+
 # Push the email confirmation to the user
             em_date = form.cleaned_data.get("date")
             em_time = form.cleaned_data.get("time")
@@ -145,7 +155,29 @@ def manage(request, booking_id ):
         form = BookingForm(request.POST, instance=this_booking)
         if form.is_valid():
             try:
-                form.save()
+# Don't accept bookings in the past, so if today and earlier today            
+                date = form.cleaned_data.get('date')
+                time = form.cleaned_data.get('time')
+                today_date = datetime.today().strftime('%Y-%m-%d')
+                today_time = datetime.today().strftime('%H:%M:%S')
+                if str(today_date) == str(date) and str(today_time) > str(time):
+                    messages.error(request, "Your booking time is invalid..")
+                    context = {
+                        'form': form,
+                        'booking_id': booking_id,
+                    }
+                    return redirect('manage', booking_id)
+
+                elif str(today_date) > str(date):
+                    messages.error(request, "Your booking date is invalid..")
+                    context = {
+                        'form': form,
+                        'booking_id': booking_id,
+                    }
+                    return redirect('manage', booking_id)
+
+                else:                
+                    form.save()                
     # Push the email confirmation to the user
                 em_date = form.cleaned_data.get("date")
                 em_time = form.cleaned_data.get("time")
