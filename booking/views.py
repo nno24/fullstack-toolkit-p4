@@ -72,7 +72,7 @@ def form_view(request):
                     'form': form,
                 }
                 return render(request, 'booking/form.html', context)
-
+            messages.success(request, "Booking confirmed")
             form.save()         
         except:
             return redirect('form')
@@ -117,6 +117,7 @@ def manage(request, booking_id ):
         if form.is_valid():
             try:
                 form.save()
+                messages.success(request, "Booking saved")
                 return redirect('greeting', booking_id=this_booking.id)
             except:
                 return redirect('error')
@@ -150,6 +151,7 @@ def cancel(request, booking_id):
             booking = Booking.objects.get(id=request.session['booking_id'])
             
         booking.delete()
+        messages.warning(request, "Your booking was cancelled..")
     except:
         return redirect('error')
 
