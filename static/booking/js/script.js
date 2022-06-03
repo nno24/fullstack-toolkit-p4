@@ -42,7 +42,17 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 
- /* jQuery */
+
+ /* jQuery ---------------------*/
+
+ //Fade effect on messages
   $("#msg").ready(function(){
     $("#msg").fadeOut(10000);
+  })
+
+  // Set style on all non native apps - like allauth
+  $("button").ready(function(){
+    if (!$("button").hasClass("btn")) {
+      $("button").addClass(["btn","waves-effect","waves-light"]);
+    }
   })
