@@ -69,11 +69,33 @@ li>a:hover {
     margin-top: 60px;
 }
 
+/* Custom styling for messages django */
 
-.msg-error {
-    background-color: red;
-    color: white;
-    opacity: 0.5;
+.msg {
+    border-radius: 0.3rem;
+    padding: 0.6rem;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.success {
+    background-color: rgb(212, 244, 212);
+    color: rgb(15, 69, 15);
+}
+
+.error {
+    background-color: rgb(230, 171, 171);
+    color: rgb(131, 4, 4);
+}
+
+.warning {
+    background-color: rgb(233, 222, 183);
+    color: rgb(112, 94, 14);
+}
+
+.info {
+    background-color: rgb(224, 224, 224);
+    color: rgb(84, 83, 83);
 }
 
 /*Google signin align to center*/
