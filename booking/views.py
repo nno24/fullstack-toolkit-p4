@@ -7,16 +7,45 @@ from datetime import datetime
 
 
 
-def push_email(date, time, email, name, people):
-        send_mail(
-        'Booking ' + date + ' at ' + time, #subject
-        'Greetings ' + name + ' your booking was confirmed for ' + people + ' people.', #Message
-        'staff@staff.staff', #from email
-        [email] #to email
+# Functions ------------------------------------
+
+def email_new_booking(date, time, email, name, people):
+    """ Function to send emails for new bookings"""
+
+    send_mail(
+        'Booking pizzahaeven',
+        'Greetings ' + name + ' your booking was confirmed for ' + people + ' people' + ' at time: ' + time + ' and date: ' + date,
+        '',
+        [email],
+        fail_silently=False,
         )
 
-# Create your views here.
+def email_update_booking(date, time, email, name, people):
+    """ Function to send emails for updated booking"""
 
+    send_mail(
+        'Booking pizzahaeven',
+        'Greetings ' + name + ' your booking was updated for ' + people + ' people' + ' at time: ' + time + ' and date: ' + date,
+        '',
+        [email],
+        fail_silently=False,
+        )
+
+def email_cancel_booking(date, time, email, name, people):
+    """ Function to send emails for cancelled booking"""
+
+    send_mail(
+        'Booking pizzahaeven',
+        'Greetings ' + name + ' your booking was CANCELLED for ' + people + ' people' + ' at time: ' + time + ' and date: ' + date,
+        '',
+        [email],
+        fail_silently=False,
+        )
+
+
+
+
+# Views ----------------------------------------
 
 def home(request):
     """ A view to display the home page"""
@@ -63,8 +92,17 @@ def form_view(request):
                     'form': form,
                 }
                 return render(request, 'booking/form.html', context)
+            form.save()
+# Push the email confirmation to the user
+            em_date = form.cleaned_data.get("date")
+            em_time = form.cleaned_data.get("time")
+            em_email = form.cleaned_data.get("email")
+            em_name = form.cleaned_data.get("name")
+            em_people = form.cleaned_data.get("people")
+            print(em_date, em_time, em_email, em_name, em_people)
+
+            email_new_booking(str(em_date), str(em_time), str(em_email), str(em_name), str(em_people))
             messages.success(request, "Booking confirmed")
-            form.save()         
         except:
             return redirect('form')
 # Get the booking id
@@ -108,6 +146,16 @@ def manage(request, booking_id ):
         if form.is_valid():
             try:
                 form.save()
+    # Push the email confirmation to the user
+                em_date = form.cleaned_data.get("date")
+                em_time = form.cleaned_data.get("time")
+                em_email = form.cleaned_data.get("email")
+                em_name = form.cleaned_data.get("name")
+                em_people = form.cleaned_data.get("people")
+                print(em_date, em_time, em_email, em_name, em_people)
+
+                email_update_booking(str(em_date), str(em_time), str(em_email), str(em_name), str(em_people))
+
                 messages.success(request, "Booking saved")
                 return redirect('greeting', booking_id=this_booking.id)
             except:
@@ -142,6 +190,15 @@ def cancel(request, booking_id):
             booking = Booking.objects.get(id=request.session['booking_id'])
             
         booking.delete()
+# Push the email confirmation to the user
+        em_date = booking.date
+        em_time = booking.time
+        em_email = booking.email
+        em_name = booking.name
+        em_people = booking.people
+        print(em_date, em_time, em_email, em_name, em_people)
+        email_cancel_booking(str(em_date), str(em_time), str(em_email), str(em_name), str(em_people))
+
         messages.warning(request, "Your booking was cancelled..")
     except:
         return redirect('error')
