@@ -40,3 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
       'outDuration': 300,
     });
   });
+
+
+ /* jQuery */
+  $("#msg").ready(function(){
+    $("#msg").fadeOut(10000);
+  })
