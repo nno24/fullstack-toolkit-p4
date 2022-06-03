@@ -1,4 +1,3 @@
-{% load static %}
 
 body {
     display: flex;
@@ -103,13 +102,4 @@ li>a:hover {
 
 .google {
     color: #4885ed !important;
-}
-
-
-.g-signin2{
-    width: 100%;
-}
-
-.g-signin2 > div{
-    margin: 0 auto;
 }
