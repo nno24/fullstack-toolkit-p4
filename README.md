@@ -3,7 +3,10 @@
 [View the live project here.](https://resturant-booking-p4.herokuapp.com/)
 
 This is the official page for Pizza Heaven. It is designed to be responsive and accessible on a range of devices, making it easy to navigate.
-The booking system offers a staff user to see the bookings in the databse, via the admin page. And customers can place new booking with date, time, and number of people. They also have to incude an email address. For the production environment, the send mail function is not activated, but it's implemented.
+The site offers a booking system on a fictive resturant, where the user can make a reservation and manage the booking by updating, or cancelling
+directly from the website. If the user is authenticated / logged in, it's possible make more than one booking vs. if the user is not logged in,
+it's limited to one booking only. Email's are sent to the email provided in the booking as well, when 1) creating a new booking 2) updating, or
+3) cancelling. In addition to this, the user have a Bookings page where he/she can manage all the bookings.
 
 <h2 align="center">
     <img src="assets/pizza-heaven-responsive.PNG">
@@ -12,14 +15,8 @@ The booking system offers a staff user to see the bookings in the databse, via t
 ## User Experience (UX)
 -   ### User stories
 
-    -   #### Resturant Booking - Staff
 
-        1. As a booking responsible for the resturant, I want to be able to see all the customers bookings time and date, and number of people in each booking, so that i can prepare the resturant in time.
-
-    -   #### esturant Booking - Customer
-
-        1. As a customer, I want to be able to book a table for a specific data and time in the resturant, so that I can get a booking confirmation on my email.
-
+    The user stories can be found [here](https://github.com/users/nno24/projects/2/views/1)
 
 -   ### Design
     -   #### Colour Scheme
@@ -38,46 +35,41 @@ The booking system offers a staff user to see the bookings in the databse, via t
         from fontawesome cdn. See base.html.
     <h2 id="wireframes"></h2>
 -   ### Wireframes/Mockup
--   There are no wireframes for this webpage
+-   <h2 align="center">
+    <img src="assets/mockup/w-home.PNG">
+    <img src="assets/mockup/w-menu.PNG">
+</h2>
 
 
 
 
 ## Features
 
--   Fully interactive booking form, submitting the booking request to the heroku postgresql server. 
+-   Fully interactive booking form including data input validation. 
+    It's also including check of date/time. So it's not possible to book for a time in the past
 
--   The booking form has input validation, and has included date and time pickers from the materializecss library.
+-   The booking form have date and time pickers for easy use/UX design from the materializecss library.
 
--   The user will be greeted with a booking confirmation if succesfully added to the database, this page also renders the 
-    booking details back to the user.
+-   The user will be informed by visual messages and landing pages if the booking was successful or not.
+    This is also true if modifying or cancelling the booking.
+    The user will also get an email for the booking, the email entered in the booking form. This is true for
+    1) new bookings 2) modifyed a booking 3) cancelled a booking.
 
--   Staff people for the resturant can login to the database to see the bookings, and do changes if necessary. The staff can login
-    to django admin by adding "/admin" to the url, and login with user: staff, pass: staff.
+-   Role based authentication including login with google account. If the user is not authenticated, it's only possible to make one single booking.
+    If the user is authenticated, it's possible to make unlimited bookings.
+-   Superuser can login via the website, and manage all bookings and user accounts, when logged on. It's an extra available menu option "manage".
+-   A Bookings page displaying all the users current bookings. From this page, it's possible to manage all bookings.
+    The page can be accessed via the dropdown menu in the main menu.
 
 -   The about and menu/booking sites is just fictive and illustrative for demonstration purposes only.
 
 -   The navbar is responsive, and uses side-nav functionality from materializecss during resizing to mobile/tablet devices.
-
-<h2 align="center">
-    <img src="assets/screenshots/pizza-heaven-booking.PNG">
-    <img src="assets/screenshots/pizza-heaven-booking-time.PNG">
-</h2>
-
-<h2 align="center">
-    <img src="assets/screenshots/pizza-heaven-conf.PNG">
-    <img src="assets/screenshots/pizza-heaven-sidenav.PNG">
-    <img src="assets/screenshots/booking-admin.PNG">
-</h2>
-
+-   Error handling for all possible scenarios, if something goes wrong, the user is redirected to a dedicated error/landing page.
+-   Backend routines: The webpage will clear up all expired bookings, when one day old. Meaning if the booking data have expired, not the date the booking was created.
 
 ## Features to be added/fixed
--   Set a limit for how many can book in the same time duration at the same date.
-    This info must be rendered to the user when before submitting the form.
--   Give the user the possibility to cancel or change their booking from the webpage.
--   Complete the menu/book with some more usable menu content - pizza types etc.
--   Complete the send mail functionality in production environment, this was tested sucecssfully in development.
-    This is the functionality that sends the email to the actual client, with the booking confrimation.
+-   Add more possible ways to login
+-   More information on the page, e.g a menu.
 
 ## Technologies Used
 
@@ -86,6 +78,7 @@ The booking system offers a staff user to see the bookings in the databse, via t
 -   [HTML5](https://en.wikipedia.org/wiki/HTML5)
 -   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
 -   [JavaScript](https://www.javascript.com/about)
+-   [jQuery](https://jquery.com/)
 -   [Python](https://www.python.org/)
 
 ### Frameworks, Libraries & Programs Used
@@ -99,6 +92,11 @@ The booking system offers a staff user to see the bookings in the databse, via t
     - Materializecss was used for css and date/time pickers.
 1. [Fontawesome:](https://fontawesome.com/)
     - Fontawesome was used for icons in the socials section in the footer
+1. [Google QAuth](https://console.cloud.google.com/)
+    - Used for enabling Google login
+1. [Django-allauth](https://pypi.org/project/django-allauth/)
+    - Used for authentication login/signup handling in django.
+      Base template in allauth is modified to fit the site look and feel.
 11. [Git](https://git-scm.com/)
     - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
 1. [GitHub:](https://github.com/)
@@ -109,12 +107,31 @@ The booking system offers a staff user to see the bookings in the databse, via t
     - Chrome DevTools was used to test responsiveness on all devices,to inspect html/css, and to debug the application.
 1.  [Am I Responsive?](http://ami.responsivedesign.is/)
     - Am I Responsive? was used to create the screenshot of the website for all devices, the first image of the README.
+1.  [Nu Html Checker](https://validator.w3.org/nu/)
+    - Used for validating html
+1.  [Webpagetest](https://www.webpagetest.org/)
+    - Used for performance and security testing.
+1.  [Jigsaw CSS validator](https://jigsaw.w3.org/css-validator/)
+    - Used for validating CSS.
+1. [Jsvalidate](https://codebeautify.org/jsvalidate)
+    - Used for validating javascript
+1. [pep8online](http://pep8online.com/)
+    - USed for validating python
+
 
 
 
 ## Testing
 
-No testing was performed in this project. There was a very limited time, but the conceps for implementing a simple fullstack website in django was demonstrated.
+1. [Nu Html Checker](assets/testing/test-html-checker.PNG)
+1. [Jigsaw CSS Checker](assets/testing/test-css-validator.PNG)
+1. [JavaScript Checker](assets/testing/test-js.PNG)
+1. [pep8online Checker views.py](assets/testing/pep8.PNG)
+1. [Webpagetest performance](assets/testing/webpagetest-performance.PNG)
+2. [Webpagetest requests](assets/testing/webpagetest-request-details.PNG)
+1.  Manual testing have been conducted on mobile and desktop. Every possible scenario is tested, and
+    exception handling is implemented thereafter. The code is well written in terms of exceptions.
+
 
 ## Deployment
 
@@ -163,8 +180,8 @@ $ git clone https://github.com/nno24/fullstack-toolkit-p4
 Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
 
 ## Credits
-1. Awesome django documentation
-2. Stackoverflow at times, and some youtube videos came handy to get django more in the fingers.
+1. Django documentation
+2. Stackoverflow at times.
 
 ### Code
 
