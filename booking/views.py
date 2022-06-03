@@ -56,8 +56,6 @@ def cleanup():
             print("Deleting old booking: ", booking.id)
             booking.delete()
 
-cleanup()
-
 # Views ----------------------------------------
 
 def home(request):
@@ -125,6 +123,7 @@ def form_view(request):
             print(em_date, em_time, em_email, em_name, em_people)
 
             email_new_booking(str(em_date), str(em_time), str(em_email), str(em_name), str(em_people))
+            cleanup()
             messages.success(request, "Booking confirmed")
         except:
             return redirect('form')
