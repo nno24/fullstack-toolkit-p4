@@ -43,7 +43,20 @@ def email_cancel_booking(date, time, email, name, people):
         )
 
 
+# Cleanup routines for old bookings
 
+def cleanup():
+    """ A function to cleanup old bookings on the server"""
+
+    bookings = Booking.objects.all()
+    today_date = datetime.today().strftime('%Y-%m-%d')
+    print("Checking if any old bookings..")
+    for booking in bookings:
+        if str(today_date) > str(booking.date):
+            print("Deleting old booking: ", booking.id)
+            booking.delete()
+
+cleanup()
 
 # Views ----------------------------------------
 
