@@ -99,6 +99,13 @@ li>a:hover {
 }
 
 /*Google signin align to center*/
+
+
+.google {
+    color: #4885ed !important;
+}
+
+
 .g-signin2{
     width: 100%;
 }

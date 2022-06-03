@@ -11,12 +11,11 @@
           <p>Welcome, {{ user.username }} !</p>
           <a href="/accounts/logout">Logout</a>
         {% else %}
-          <p>Login for a better booking experience</p>
+          <p>Login for a better booking experience, and manage more than one booking!!</p>
           <hr>
-            <a href="{% provider_login_url 'google' %}">Continue with Google</a>
+            <a href="{% provider_login_url 'google' %}" class="btn"><i class="fab fa-google left"></i>Login</a>
             <br>
-            <p>or..</p>
-            <br>
+            <p>or</p>
             <a href="/accounts/login">Login with username/email</a>
         {% endif %}   
       </div>
